@@ -1,0 +1,17 @@
+<mat-form-field class="chip-list" [formGroup]="keywordGroup">
+  <input formControlName="keywords" type="hidden" />
+  <mat-chip-list #chipList aria-label="Búsqueda">
+    <mat-chip *ngFor="let item of keywords" [removable]="true" (removed)="removeKeyword(item)">
+      {{ item }}
+      <mat-icon matChipRemove>cancel</mat-icon>
+    </mat-chip>
+    <input [placeholder]="placeholder"
+      [matChipInputFor]="chipList"
+      [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+      [matChipInputAddOnBlur]="true"
+      (matChipInputTokenEnd)="addKeyword($event)">
+  </mat-chip-list>
+  <mat-error>
+    Campo obligatorio
+  </mat-error>
+</mat-form-field>

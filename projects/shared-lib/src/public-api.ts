@@ -6,6 +6,7 @@
 
 export * from './lib/components/controls/add-button/add-button.component';
 export * from './lib/components/controls/image-upload-control/image-upload-control.component';
+export * from './lib/components/controls/keyword-control/keyword-control.component';
 export * from './lib/components/controls/progress-bar/progress-bar.component';
 export * from './lib/components/controls/progress-spinner/progress-spinner.component';
 export * from './lib/components/controls/select-trigger-label/select-trigger-label.component';

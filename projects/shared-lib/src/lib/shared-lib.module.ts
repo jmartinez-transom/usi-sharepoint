@@ -1,12 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule, ModuleWithProviders } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // Custom components
 
 import { AddButtonComponent } from './components/controls/add-button/add-button.component';
 import { ImageUploadControlComponent } from './components/controls/image-upload-control/image-upload-control.component';
+import { KeywordControlComponent } from './components/controls/keyword-control/keyword-control.component';
 import { ProgressBarComponent } from './components/controls/progress-bar/progress-bar.component';
 import { ProgressSpinnerComponent } from './components/controls/progress-spinner/progress-spinner.component';
 import { SelectTriggerLabelComponent } from './components/controls/select-trigger-label/select-trigger-label.component';
@@ -17,8 +18,11 @@ import { DataTableComponent } from './components/tables/data-table/data-table.co
 // Material components
 
 import { MatButtonModule } from '@angular/material/button';
+import { MatChipsModule } from '@angular/material/chips';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
@@ -35,6 +39,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     DataTableComponent,
     FormDialogComponent,
     ImageUploadControlComponent,
+    KeywordControlComponent,
     ProgressBarComponent,
     ProgressSpinnerComponent,
     SelectTriggerLabelComponent
@@ -47,6 +52,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     DataTableComponent,
     FormDialogComponent,
     ImageUploadControlComponent,
+    KeywordControlComponent,
     ProgressBarComponent,
     ProgressSpinnerComponent,
     SelectTriggerLabelComponent
@@ -56,8 +62,11 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     FormsModule,
     HttpClientModule,
     MatButtonModule,
+    MatChipsModule,
     MatDialogModule,
+    MatFormFieldModule,
     MatIconModule,
+    MatInputModule,
     MatMenuModule,
     MatPaginatorModule,
     MatProgressBarModule,
@@ -65,7 +74,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatSnackBarModule,
     MatSortModule,
     MatTableModule,
-    MatTooltipModule
+    MatTooltipModule,
+    ReactiveFormsModule
   ]
 })
 export class SharedLibModule {
