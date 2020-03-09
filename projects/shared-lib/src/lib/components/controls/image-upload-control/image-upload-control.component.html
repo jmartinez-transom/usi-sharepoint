@@ -1,8 +1,11 @@
-<section>
+<section [formGroup]="imageGroup">
+  <input formControlName="data" type="hidden" />
+  <input formControlName="name" type="hidden" />
+  <input formControlName="type" type="hidden" />
   <strong>{{ label }}</strong>
   <br />
   <br />
-  <input (change)="onFileChanged($event)" #fileTnput style="display: none;" type="file" />
+  <input accept="image/png, image/jpeg" (change)="onFileChanged($event)" #fileTnput style="display: none;" type="file" />
   <button (click)="fileTnput.click()" mat-raised-button *ngIf="!file">
     Seleccionar imagen
   </button>
@@ -10,4 +13,7 @@
   <button (click)="onDelete()" mat-icon-button matTooltip="Eliminar" *ngIf="file">
     <mat-icon>delete</mat-icon>
   </button>
+  <mat-error *ngIf="data.dirty && data.hasError('required')">
+    Campo obligatorio
+  </mat-error>
 </section>

@@ -1,18 +1,80 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input, OnInit, forwardRef, OnDestroy } from '@angular/core';
+import { FormGroup, FormBuilder, NG_VALUE_ACCESSOR, NG_VALIDATORS, FormControl, Validators, ControlValueAccessor } from '@angular/forms';
+import { Subscription } from 'rxjs';
 import { ImageFile } from '../../../interfaces/image-file';
 
 @Component({
   selector: 'shared-image-upload-control',
   templateUrl: './image-upload-control.component.html',
-  styleUrls: ['./image-upload-control.component.scss']
+  styleUrls: ['./image-upload-control.component.scss'],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => ImageUploadControlComponent),
+      multi: true
+    },
+    {
+      provide: NG_VALIDATORS,
+      useExisting: forwardRef(() => ImageUploadControlComponent),
+      multi: true
+    }
+  ]
 })
-export class ImageUploadControlComponent {
+export class ImageUploadControlComponent implements ControlValueAccessor, OnDestroy, OnInit {
+  disabled: boolean;
+  imageGroup: FormGroup;
   @Input() label: string;
-  @Output() fileChange = new EventEmitter();
   @Input() file: ImageFile;
+  subscriptions: Subscription[] = [];
 
-  constructor() {
+  constructor(
+    private fb: FormBuilder
+  ) {
 
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.forEach(s => s.unsubscribe());
+  }
+
+  ngOnInit(): void {
+    this.setupForm();
+
+    this.subscriptions.push(
+      this.imageGroup.valueChanges.subscribe(value => {
+        this.onChange(value);
+        this.onTouched();
+      })
+    );
+  }
+
+  onChange: any = (_: any) => {};
+  onTouched: any = () => {};
+
+  registerOnChange(fn: any): void {
+    this.onChange = fn;
+  }
+
+  registerOnTouched(fn: any): void {
+    this.onTouched = fn;
+  }
+
+  setDisabledState?(isDisabled: boolean): void {
+    this.disabled = isDisabled;
+  }
+
+  validate(_: FormControl) {
+    return this.imageGroup.valid ? null : { imageGroup: { valid: false } };
+  }
+
+  writeValue(value: any): void {
+    if (value) {
+      this.value = value;
+    }
+
+    if (value === null) {
+      this.imageGroup.reset();
+    }
   }
 
   // Custom public methods
@@ -20,7 +82,11 @@ export class ImageUploadControlComponent {
   onDelete() {
     this.file = null;
 
-    this.fileChange.emit(this.file);
+    this.imageGroup.patchValue({
+      data: null,
+      name: null,
+      type: null
+    });
   }
 
   onFileChanged(event) {
@@ -34,8 +100,61 @@ export class ImageUploadControlComponent {
         name: file.name,
         type: file.type
       };
-      this.fileChange.emit(this.file);
+
+      this.imageGroup.patchValue({
+        data: reader.result,
+        name: file.name,
+        type: file.type
+      });
     };
+  }
+
+  // Custom private methods
+
+  private setupForm() {
+    this.imageGroup = this.fb.group({
+      data: null,
+      name: null,
+      type: null
+    });
+
+    if (this.file) {
+      this.imageGroup.patchValue({
+        data: this.file.data,
+        name: this.file.name,
+        type: this.file.type
+      });
+    }
+  }
+
+  private setValidation(value: boolean) {
+    if (value) {
+      this.data.setValidators(Validators.required);
+    } else {
+      this.data.clearValidators();
+    }
+
+    this.data.updateValueAndValidity();
+  }
+
+  // Getters and setters
+
+  get data() {
+    return this.imageGroup.get('data');
+  }
+
+  set required(value: boolean) {
+    this.setValidation(value);
+  }
+
+  get value() {
+    return this.imageGroup.value;
+  }
+
+  set value(value) {
+    this.imageGroup.setValue(value);
+    this.onChange(value);
+    this.onTouched();
   }
 
 }
