@@ -141,6 +141,7 @@ export class KeywordControlComponent implements ControlValueAccessor, OnDestroy,
   }
 
   set value(value) {
+    this.keywords = value ? value.keywords.split(',') : [];
     this.keywordGroup.setValue(value);
     this.onChange(value);
     this.onTouched();
