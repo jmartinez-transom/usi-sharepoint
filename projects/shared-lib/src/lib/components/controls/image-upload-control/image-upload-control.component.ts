@@ -117,14 +117,6 @@ export class ImageUploadControlComponent implements ControlValueAccessor, OnDest
       name: null,
       type: null
     });
-
-    if (this.file) {
-      this.imageGroup.patchValue({
-        data: this.file.data,
-        name: this.file.name,
-        type: this.file.type
-      });
-    }
   }
 
   private setValidation(value: boolean) {
@@ -152,6 +144,7 @@ export class ImageUploadControlComponent implements ControlValueAccessor, OnDest
   }
 
   set value(value) {
+    this.file = value;
     this.imageGroup.setValue(value);
     this.onChange(value);
     this.onTouched();

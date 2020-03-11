@@ -1,5 +1,5 @@
 export interface ImageFile {
-  data: string | ArrayBuffer;
+  data?: string | ArrayBuffer;
   name: string;
   type: string;
 }

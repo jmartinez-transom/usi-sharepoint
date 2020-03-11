@@ -13,7 +13,7 @@
   <button (click)="onDelete()" mat-icon-button matTooltip="Eliminar" *ngIf="file">
     <mat-icon>delete</mat-icon>
   </button>
-  <mat-error *ngIf="data.dirty && data.hasError('required')">
+  <mat-error *ngIf="data.dirty || data.hasError('required')">
     Campo obligatorio
   </mat-error>
 </section>
