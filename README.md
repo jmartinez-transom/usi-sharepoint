@@ -1,27 +1,33 @@
-# UsiSharepoint
+# Usi Sharepoint
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.5.
 
-## Development server
+# Steps to generate a form project
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Create application (project)
 
-## Code scaffolding
+Run `ng generate application [PROJECT_NAME] --prefix=[PREFIX] --routing=false --style=scss`
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Create service
 
-## Build
+Run `ng generate service services/main-table --project=[PROJECT_NAME]`
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## Create datasource
 
-## Running unit tests
+Run `ng generate class datasources/main-table.datasource --project=[PROJECT_NAME]`
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Create table component
 
-## Running end-to-end tests
+Run `ng generate component components/tables/main-table --project=[PROJECT_NAME]`
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+## Create form component
 
-## Further help
+Run `ng generate component components/forms/main-form --project=[PROJECT_NAME]`
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Create dialog component
+
+Run `ng generate component components/dialogs/main-form-dialog --project=[PROJECT_NAME]`
+
+# Steps to generate a webpart project
+
+Coming soon...
