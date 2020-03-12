@@ -47,6 +47,248 @@
           "style": "scss"
         }
       }
+    },
+    "campains-events": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/campains-events",
+      "sourceRoot": "projects/campains-events/src",
+      "prefix": "ce",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/campains-events",
+            "index": "projects/campains-events/src/index.html",
+            "main": "projects/campains-events/src/main.ts",
+            "polyfills": "projects/campains-events/src/polyfills.ts",
+            "tsConfig": "projects/campains-events/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/campains-events/src/favicon.ico",
+              "projects/campains-events/src/assets"
+            ],
+            "styles": [
+              "projects/campains-events/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/campains-events/src/environments/environment.ts",
+                  "with": "projects/campains-events/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "campains-events:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "campains-events:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "campains-events:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/campains-events/src/test.ts",
+            "polyfills": "projects/campains-events/src/polyfills.ts",
+            "tsConfig": "projects/campains-events/tsconfig.spec.json",
+            "karmaConfig": "projects/campains-events/karma.conf.js",
+            "assets": [
+              "projects/campains-events/src/favicon.ico",
+              "projects/campains-events/src/assets"
+            ],
+            "styles": [
+              "projects/campains-events/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/campains-events/tsconfig.app.json",
+              "projects/campains-events/tsconfig.spec.json",
+              "projects/campains-events/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/campains-events/e2e/protractor.conf.js",
+            "devServerTarget": "campains-events:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "campains-events:serve:production"
+            }
+          }
+        }
+      }
+    },
+    "cabinet": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/cabinet",
+      "sourceRoot": "projects/cabinet/src",
+      "prefix": "cab",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/cabinet",
+            "index": "projects/cabinet/src/index.html",
+            "main": "projects/cabinet/src/main.ts",
+            "polyfills": "projects/cabinet/src/polyfills.ts",
+            "tsConfig": "projects/cabinet/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/cabinet/src/favicon.ico",
+              "projects/cabinet/src/assets"
+            ],
+            "styles": [
+              "projects/cabinet/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/cabinet/src/environments/environment.ts",
+                  "with": "projects/cabinet/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "cabinet:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "cabinet:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "cabinet:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/cabinet/src/test.ts",
+            "polyfills": "projects/cabinet/src/polyfills.ts",
+            "tsConfig": "projects/cabinet/tsconfig.spec.json",
+            "karmaConfig": "projects/cabinet/karma.conf.js",
+            "assets": [
+              "projects/cabinet/src/favicon.ico",
+              "projects/cabinet/src/assets"
+            ],
+            "styles": [
+              "projects/cabinet/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/cabinet/tsconfig.app.json",
+              "projects/cabinet/tsconfig.spec.json",
+              "projects/cabinet/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/cabinet/e2e/protractor.conf.js",
+            "devServerTarget": "cabinet:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "cabinet:serve:production"
+            }
+          }
+        }
+      }
     }
   },
   "defaultProject": "shared-lib",
