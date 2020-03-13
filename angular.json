@@ -289,6 +289,248 @@
           }
         }
       }
+    },
+    "social-networks": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/social-networks",
+      "sourceRoot": "projects/social-networks/src",
+      "prefix": "sn",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/social-networks",
+            "index": "projects/social-networks/src/index.html",
+            "main": "projects/social-networks/src/main.ts",
+            "polyfills": "projects/social-networks/src/polyfills.ts",
+            "tsConfig": "projects/social-networks/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/social-networks/src/favicon.ico",
+              "projects/social-networks/src/assets"
+            ],
+            "styles": [
+              "projects/social-networks/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/social-networks/src/environments/environment.ts",
+                  "with": "projects/social-networks/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "social-networks:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "social-networks:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "social-networks:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/social-networks/src/test.ts",
+            "polyfills": "projects/social-networks/src/polyfills.ts",
+            "tsConfig": "projects/social-networks/tsconfig.spec.json",
+            "karmaConfig": "projects/social-networks/karma.conf.js",
+            "assets": [
+              "projects/social-networks/src/favicon.ico",
+              "projects/social-networks/src/assets"
+            ],
+            "styles": [
+              "projects/social-networks/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/social-networks/tsconfig.app.json",
+              "projects/social-networks/tsconfig.spec.json",
+              "projects/social-networks/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/social-networks/e2e/protractor.conf.js",
+            "devServerTarget": "social-networks:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "social-networks:serve:production"
+            }
+          }
+        }
+      }
+    },
+    "search-bar": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/search-bar",
+      "sourceRoot": "projects/search-bar/src",
+      "prefix": "sb",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/search-bar",
+            "index": "projects/search-bar/src/index.html",
+            "main": "projects/search-bar/src/main.ts",
+            "polyfills": "projects/search-bar/src/polyfills.ts",
+            "tsConfig": "projects/search-bar/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/search-bar/src/favicon.ico",
+              "projects/search-bar/src/assets"
+            ],
+            "styles": [
+              "projects/search-bar/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/search-bar/src/environments/environment.ts",
+                  "with": "projects/search-bar/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "search-bar:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "search-bar:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "search-bar:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/search-bar/src/test.ts",
+            "polyfills": "projects/search-bar/src/polyfills.ts",
+            "tsConfig": "projects/search-bar/tsconfig.spec.json",
+            "karmaConfig": "projects/search-bar/karma.conf.js",
+            "assets": [
+              "projects/search-bar/src/favicon.ico",
+              "projects/search-bar/src/assets"
+            ],
+            "styles": [
+              "projects/search-bar/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/search-bar/tsconfig.app.json",
+              "projects/search-bar/tsconfig.spec.json",
+              "projects/search-bar/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/search-bar/e2e/protractor.conf.js",
+            "devServerTarget": "search-bar:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "search-bar:serve:production"
+            }
+          }
+        }
+      }
     }
   },
   "defaultProject": "shared-lib",
