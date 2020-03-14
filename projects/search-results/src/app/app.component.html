@@ -1,0 +1,13 @@
+<sr-main-view></sr-main-view>
+<ul>
+  <li *ngFor="let item of data">
+    <a (click)="onClick(item)">
+      {{ item.title }}
+    </a>
+  </li>
+</ul>
+
+
+<h1>{{ selectedData?.title }}</h1>
+
+<p>{{ selectedData?.address }}</p>
