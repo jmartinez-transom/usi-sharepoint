@@ -7,12 +7,13 @@
   <br />
 
   <input accept="image/png, image/jpeg" (change)="onFileChanged($event)" #fileTnput style="display: none;" type="file" />
-  <button (click)="fileTnput.click()" mat-raised-button *ngIf="!this.name?.value">
+
+  <button (click)="fileTnput.click()" mat-raised-button *ngIf="!this.name?.value" type="button">
     Seleccionar imagen
   </button>
   <span>{{ this.name?.value }}</span>
 
-  <button (click)="onDelete()" mat-icon-button matTooltip="Eliminar" *ngIf="this.name?.value">
+  <button (click)="onDelete()" mat-icon-button matTooltip="Eliminar" *ngIf="this.name?.value" type="button">
     <mat-icon>delete</mat-icon>
   </button>
 
