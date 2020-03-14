@@ -37,7 +37,6 @@ export class MainFormDialogComponent implements OnInit {
     this.mfc.submit()
       .subscribe(
         response => {
-          console.log(response)
           if (response) {
             this.dialogRef.close(true);
             this.mts.loadData().subscribe();

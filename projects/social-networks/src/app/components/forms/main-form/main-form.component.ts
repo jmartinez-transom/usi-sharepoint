@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormArray, ValidationErrors, AbstractControl, ValidatorFn } from '@angular/forms';
-import { switchMap } from 'rxjs/operators';
+import { switchMap, map } from 'rxjs/operators';
 import { FormsService,SharepointIntegrationService, ImageUploadControlComponent } from 'shared-lib';
 import { environment } from '../../../../environments/environment';
 
@@ -56,9 +56,8 @@ export class MainFormComponent implements OnInit {
     }
 
     return this.sis.getFormDigest().pipe(
-      switchMap(formDigest => {
-        return this.sis.save(environment.sharepoint.listName, data, formDigest);
-      })
+      switchMap(formDigest => this.sis.save(environment.sharepoint.listName, data, formDigest)),
+      map(response => response ? response : true)
     );
   }
 
@@ -94,9 +93,9 @@ export class MainFormComponent implements OnInit {
       if (control.value) {
         const temp = [...[control.value], ...siblings];
         const facebookCount = temp.filter(t => t === 'Facebook').length;
-        const instagramCount = temp.filter(t => t === 'Instagram').length;
+        const twitterCount = temp.filter(t => t === 'Twitter').length;
 
-        return facebookCount > 2 || instagramCount > 2 ? { limit: true } : null;
+        return facebookCount > 2 || twitterCount > 2 ? { limit: true } : null;
       }
 
       return null;
