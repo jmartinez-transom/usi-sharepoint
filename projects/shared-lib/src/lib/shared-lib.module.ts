@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { getSpanishPaginatorIntl } from './spanish-paginator-intl';
 
 // Custom components
 
@@ -24,7 +25,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
-import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatPaginatorModule, MatPaginatorIntl } from '@angular/material/paginator';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
@@ -76,6 +77,12 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatTableModule,
     MatTooltipModule,
     ReactiveFormsModule
+  ],
+  providers: [
+    {
+      provide: MatPaginatorIntl,
+      useValue: getSpanishPaginatorIntl()
+    }
   ]
 })
 export class SharedLibModule {
