@@ -1,7 +1,6 @@
 import { Component, Input, OnInit, forwardRef, OnDestroy } from '@angular/core';
-import { FormGroup, FormBuilder, NG_VALUE_ACCESSOR, NG_VALIDATORS, FormControl, Validators, ControlValueAccessor } from '@angular/forms';
+import { FormGroup, FormBuilder, NG_VALUE_ACCESSOR, NG_VALIDATORS, FormControl, ControlValueAccessor, ValidatorFn, ValidationErrors } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { ImageFile } from '../../../interfaces/image-file';
 
 @Component({
   selector: 'shared-image-upload-control',
@@ -22,9 +21,9 @@ import { ImageFile } from '../../../interfaces/image-file';
 })
 export class ImageUploadControlComponent implements ControlValueAccessor, OnDestroy, OnInit {
   disabled: boolean;
+  firstChange = false;
   imageGroup: FormGroup;
   @Input() label: string;
-  @Input() file: ImageFile;
   subscriptions: Subscription[] = [];
 
   constructor(
@@ -80,13 +79,11 @@ export class ImageUploadControlComponent implements ControlValueAccessor, OnDest
   // Custom public methods
 
   onDelete() {
-    this.file = null;
-
-    this.imageGroup.patchValue({
+    this.value = {
       data: null,
       name: null,
       type: null
-    });
+    };
   }
 
   onFileChanged(event) {
@@ -95,21 +92,21 @@ export class ImageUploadControlComponent implements ControlValueAccessor, OnDest
 
     reader.readAsDataURL(file);
     reader.onload = () => {
-      this.file = {
+      this.value = {
         data: reader.result,
         name: file.name,
         type: file.type
       };
-
-      this.imageGroup.patchValue({
-        data: reader.result,
-        name: file.name,
-        type: file.type
-      });
     };
   }
 
   // Custom private methods
+
+  private imageValidator(): ValidatorFn {
+    return (group: FormGroup): ValidationErrors => {
+      return group.value.name ? null : { imageValidator: true };
+    }
+  }
 
   private setupForm() {
     this.imageGroup = this.fb.group({
@@ -121,18 +118,19 @@ export class ImageUploadControlComponent implements ControlValueAccessor, OnDest
 
   private setValidation(value: boolean) {
     if (value) {
-      this.data.setValidators(Validators.required);
+      this.imageGroup.setValidators(this.imageValidator());
+      this.imageGroup.markAsUntouched();
     } else {
-      this.data.clearValidators();
+      this.imageGroup.clearValidators();
     }
 
-    this.data.updateValueAndValidity();
+    this.imageGroup.updateValueAndValidity();
   }
 
   // Getters and setters
 
-  get data() {
-    return this.imageGroup.get('data');
+  get name() {
+    return this.imageGroup.get('name');
   }
 
   set required(value: boolean) {
@@ -144,7 +142,7 @@ export class ImageUploadControlComponent implements ControlValueAccessor, OnDest
   }
 
   set value(value) {
-    this.file = value;
+    this.firstChange = true;
     this.imageGroup.setValue(value);
     this.onChange(value);
     this.onTouched();
