@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
-import { switchMap } from 'rxjs/operators';
+import { switchMap, map } from 'rxjs/operators';
 import { FormsService,SharepointIntegrationService, ImageUploadControlComponent } from 'shared-lib';
 import { environment } from '../../../../environments/environment';
 
@@ -50,8 +50,7 @@ export class MainFormComponent implements OnInit {
       Dependencia: values.dependencyTitle,
       Enlace: values.url,
       Imagen: values.image.data,
-      Keywords: values.keywords.keywords,
-      Orden: 0, // TODO - ?
+      Keywords: values.keywords ? values.keywords.keywords : null,
       Tipodegabinete: values.type,
       Title: values.ownerName
     };
@@ -66,9 +65,8 @@ export class MainFormComponent implements OnInit {
     }
 
     return this.sis.getFormDigest().pipe(
-      switchMap(formDigest => {
-        return this.sis.save(environment.sharepoint.listName, data, formDigest);
-      })
+      switchMap(formDigest => this.sis.save(environment.sharepoint.listName, data, formDigest)),
+      map(response => response ? response : true)
     );
   }
 
@@ -76,21 +74,21 @@ export class MainFormComponent implements OnInit {
 
   private createNameGroup() {
     return this.fb.group({
-      link: [null, [Validators.required, Validators.pattern(this.urlRegex)]],
-      name: [null, Validators.required]
+      link: [null, Validators.pattern(this.urlRegex)],
+      name: null
     });
   }
 
   private setupForm() {
     this.mainForm = this.fb.group({
-      curriculum: [null, Validators.required],
-      dependencyTitle: [null, Validators.required],
+      curriculum: null,
+      dependencyTitle: null,
       id: null,
       image: null,
       keywords: null,
       names: this.fb.array([]),
-      ownerName: [null, Validators.required],
-      position: [null, Validators.required],
+      ownerName: null,
+      position: null,
       type: [null, Validators.required],
       url: [null, [Validators.required, Validators.pattern(this.urlRegex)]]
     });

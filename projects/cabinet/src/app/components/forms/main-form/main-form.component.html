@@ -6,10 +6,7 @@
   <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="1%">
     <div fxFlex>
       <mat-form-field>
-        <input formControlName="ownerName" matInput maxlength="100" placeholder="Nombre del Titular *" />
-        <mat-error>
-          Este campo obligatorio
-        </mat-error>
+        <input formControlName="ownerName" matInput maxlength="40" placeholder="Nombre del Titular" />
       </mat-form-field>
     </div>
     <div fxFlex>
@@ -30,37 +27,28 @@
   <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="1%">
     <div fxFlex>
       <mat-form-field>
-        <input formControlName="dependencyTitle" matInput maxlength="100" placeholder="Título de la Dependencia *" />
-        <mat-error>
-          Este campo obligatorio
-        </mat-error>
+        <input formControlName="dependencyTitle" matInput maxlength="86" placeholder="Título de la Dependencia" />
       </mat-form-field>
     </div>
     <div fxFlex>
       <mat-form-field>
-        <input formControlName="position" matInput maxlength="100" placeholder="Cargo *" />
-        <mat-error>
-          Este campo es obligatorio
-        </mat-error>
+        <input formControlName="position" matInput maxlength="86" placeholder="Cargo" />
       </mat-form-field>
     </div>
   </div>
 
   <mat-form-field>
-    <textarea formControlName="curriculum" matInput maxlength="256" placeholder="Currículum *" rows="1"></textarea>
-    <mat-error>
-      Este campo es obligatorio
-    </mat-error>
+    <textarea formControlName="curriculum" matInput maxlength="600" placeholder="Currículum" rows="1"></textarea>
   </mat-form-field>
 
   <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="1%">
     <div fxFlex>
-      <shared-image-upload-control #image formControlName="image" label="Imagen"></shared-image-upload-control>
+      <shared-image-upload-control #image formControlName="image" label="Imagen *"></shared-image-upload-control>
     </div>
     <div fxFlex>
       <mat-form-field>
         <mat-select formControlName="type" placeholder="Tipo de Gabinete *">
-          <mat-option value="Ampliad">Ampliad</mat-option>
+          <mat-option value="Ampliado">Ampliado</mat-option>
           <mat-option value="Legal">Legal</mat-option>
         </mat-select>
         <mat-error>
@@ -78,18 +66,14 @@
     <div [formGroupName]="i" fxLayout="row" fxLayout.xs="column" fxLayoutGap="1%" *ngFor="let item of names.controls; let i = index">
       <div fxFlex>
         <mat-form-field>
-          <input formControlName="name" matInput maxlength="100" placeholder="Nombre *" />
-          <mat-error>
-            Este campo es obligatorio
-          </mat-error>
+          <input formControlName="name" matInput maxlength="100" placeholder="Nombre" />
         </mat-form-field>
       </div>
       <div fxFlex>
         <mat-form-field>
-          <input formControlName="link" matInput maxlength="256" placeholder="Enlace *" />
+          <input formControlName="link" matInput maxlength="256" placeholder="Enlace" />
           <mat-error>
-            <ng-container>Este campo es obligatorio</ng-container>
-            <ng-container>Enlace inválido</ng-container>
+            Enlace inválido
           </mat-error>
         </mat-form-field>
       </div>
