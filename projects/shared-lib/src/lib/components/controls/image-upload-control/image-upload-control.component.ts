@@ -25,7 +25,7 @@ export class ImageUploadControlComponent implements AfterViewInit, ControlValueA
   firstChange = false;
   imageGroup: FormGroup;
   @Input() label: string;
-  @Input() maxFileSize = '1MB';
+  @Input() maxFileSize = '750KB';
   private maxFileSizeBytes: number;
   subscriptions: Subscription[] = [];
 
