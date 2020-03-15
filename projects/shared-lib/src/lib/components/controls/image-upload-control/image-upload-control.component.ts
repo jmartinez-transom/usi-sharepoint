@@ -119,17 +119,16 @@ export class ImageUploadControlComponent implements AfterViewInit, ControlValueA
   private calculateSize(value: string) {
     value = value.replace(/\s/g, '');
 
-    const byte = 1024;
     const size = value.match(/^\d+(\.\d+)?/)[0];
     const unit = value.substr(size.length).toUpperCase();
     let sizeValue = parseFloat(size);
 
-    switch(unit) {
+    switch (unit) {
       case 'KB':
-        sizeValue *= 1000 * byte;
+        sizeValue *= 1000;
         break;
       case 'MB':
-        sizeValue *= 1000000 * byte;
+        sizeValue *= 1000000;
         break;
     }
 
