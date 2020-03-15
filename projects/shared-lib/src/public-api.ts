@@ -26,6 +26,7 @@ export * from './lib/shared-lib.module';
 
 // Services
 
+export * from './lib/services/common.service';
 export * from './lib/services/forms.service';
 export * from './lib/services/message.service';
 export * from './lib/services/sharepoint-integration.service';
