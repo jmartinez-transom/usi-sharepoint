@@ -12,6 +12,7 @@ import { environment } from '../environments/environment';
 
 // Custom components
 
+import { SortControlComponent } from './components/controls/sort-control/sort-control.component';
 import { MainFormDialogComponent } from './components/dialogs/main-form-dialog/main-form-dialog.component';
 import { MainFormComponent } from './components/forms/main-form/main-form.component';
 import { MainTableComponent } from './components/tables/main-table/main-table.component';
@@ -22,6 +23,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
@@ -30,7 +32,8 @@ import { MatSelectModule } from '@angular/material/select';
     AppComponent,
     MainFormComponent,
     MainFormDialogComponent,
-    MainTableComponent
+    MainTableComponent,
+    SortControlComponent
   ],
   entryComponents: [
     MainFormDialogComponent
@@ -44,6 +47,7 @@ import { MatSelectModule } from '@angular/material/select';
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
+    MatRadioModule,
     MatSelectModule,
     ReactiveFormsModule,
     SharedLibModule.forRoot(environment)

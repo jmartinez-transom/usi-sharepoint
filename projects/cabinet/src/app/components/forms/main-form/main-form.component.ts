@@ -51,6 +51,7 @@ export class MainFormComponent implements OnInit {
       Enlace: values.url,
       Imagen: values.image.data,
       Keywords: values.keywords ? values.keywords.keywords : null,
+      NombreImagen: values.image.name,
       Tipodegabinete: values.type,
       Title: values.ownerName
     };
@@ -58,7 +59,7 @@ export class MainFormComponent implements OnInit {
     values.names.forEach((n, index) => {
       data[`Nombre${index + 1}`] = n.name;
       data[`Enlace${index + 1}`] = n.link;
-    })
+    });
 
     if (values.id) {
       data.Id = values.id;

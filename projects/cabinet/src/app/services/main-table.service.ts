@@ -24,7 +24,7 @@ export class MainTableService {
   loadData() {
     const data = {
       select: ['Cargotitular', 'CV', 'Dependencia', 'Enlace', 'Enlace1', 'Enlace2', 'Enlace3', 'Id', 'Imagen', 'Keywords',
-        'Nombre1', 'Nombre2', 'Nombre3', 'Tipodegabinete', 'Title', 'Created'],
+        'Nombre1', 'Nombre2', 'Nombre3', 'NombreImagen', 'Tipodegabinete', 'Title', 'Created'],
       top: 5000
     };
     const datePipe = new DatePipe('en-US');
@@ -40,7 +40,7 @@ export class MainTableService {
               id: r.Id,
               image: {
                 data: r.Imagen,
-                name: 'Archivo',
+                name: r.NombreImagen,
                 type: 'image/png'
               },
               keywords: r.Keywords,
