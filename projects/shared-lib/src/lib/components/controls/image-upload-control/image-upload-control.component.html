@@ -7,7 +7,7 @@
   <br />
 
   <ng-container *ngIf="!this.name?.value">
-    <input accept="image/png, image/jpeg" (change)="onFileChanged($event)" #fileTnput style="display: none;" type="file" />
+    <input accept="image/*" (change)="onFileChanged($event)" #fileTnput style="display: none;" type="file" />
 
     <button (click)="fileTnput.click()" mat-raised-button *ngIf="!this.name?.value" type="button">
       Seleccionar imagen

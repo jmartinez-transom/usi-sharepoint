@@ -102,6 +102,10 @@ export class ImageUploadControlComponent implements AfterViewInit, ControlValueA
       this.message.show(`Tamaño de imagen mayor al permitido (${this.maxFileSize}).`);
 
       return;
+    } else if (file.type.match(/^image\/.*$/) === null) {
+      this.message.show('El archivo seleccionado no es de tipo imagen.');
+
+      return;
     }
 
     reader.readAsDataURL(file);
