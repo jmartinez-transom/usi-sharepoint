@@ -3,7 +3,17 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  sharepoint: {
+    prefix: null
+  },
+  sources: [
+    {
+      fields: ['Title'],
+      listName: 'Noticias',
+      rediretUrl: '/SitePages/Web Parts/Portada.aspx'
+    }
+  ]
 };
 
 /*
