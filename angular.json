@@ -652,6 +652,127 @@
           }
         }
       }
+    },
+    "cover-year": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/cover-year",
+      "sourceRoot": "projects/cover-year/src",
+      "prefix": "cy",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/cover-year",
+            "index": "projects/cover-year/src/index.html",
+            "main": "projects/cover-year/src/main.ts",
+            "polyfills": "projects/cover-year/src/polyfills.ts",
+            "tsConfig": "projects/cover-year/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/cover-year/src/favicon.ico",
+              "projects/cover-year/src/assets"
+            ],
+            "styles": [
+              "projects/cover-year/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/cover-year/src/environments/environment.ts",
+                  "with": "projects/cover-year/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "cover-year:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "cover-year:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "cover-year:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/cover-year/src/test.ts",
+            "polyfills": "projects/cover-year/src/polyfills.ts",
+            "tsConfig": "projects/cover-year/tsconfig.spec.json",
+            "karmaConfig": "projects/cover-year/karma.conf.js",
+            "assets": [
+              "projects/cover-year/src/favicon.ico",
+              "projects/cover-year/src/assets"
+            ],
+            "styles": [
+              "projects/cover-year/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/cover-year/tsconfig.app.json",
+              "projects/cover-year/tsconfig.spec.json",
+              "projects/cover-year/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/cover-year/e2e/protractor.conf.js",
+            "devServerTarget": "cover-year:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "cover-year:serve:production"
+            }
+          }
+        }
+      }
     }
   },
   "defaultProject": "shared-lib",
