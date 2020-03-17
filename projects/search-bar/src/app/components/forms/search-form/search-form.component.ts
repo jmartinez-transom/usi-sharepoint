@@ -21,7 +21,7 @@ export class SearchFormComponent implements OnInit {
   // Custom public methods
 
   onSubmit() {
-    window.location.href = `${environment.searchPath}/${this.searchForm.value.search}`;
+    window.location.href = `${environment.redirectUrl}/${this.searchForm.value.search}`;
   }
 
   // Custom private methods

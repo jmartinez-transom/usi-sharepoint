@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  searchPath: '/SitePages/Busqueda.aspx'
+  redirectUrl: '/SitePages/Busqueda.aspx'
 };
 
 /*

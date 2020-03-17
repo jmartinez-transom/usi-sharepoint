@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  searchPath: '/SitePages/Busqueda.aspx'
+  redirectUrl: '/SitePages/Busqueda.aspx'
 };
