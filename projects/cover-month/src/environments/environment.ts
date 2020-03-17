@@ -3,7 +3,11 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  redirectUrl: '/SitePages/Web%20Parts/Portada.aspx',
+  sharepoint: {
+    listName: 'Noticias'
+  }
 };
 
 /*

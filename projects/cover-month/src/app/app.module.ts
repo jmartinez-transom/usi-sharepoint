@@ -1,8 +1,10 @@
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { SharedLibModule } from 'shared-lib';
 
 import { AppComponent } from './app.component';
+import { environment } from '../environments/environment';
 
 // Custom components
 
@@ -21,7 +23,8 @@ import { MatCardModule } from '@angular/material/card';
   imports: [
     BrowserModule,
     FlexLayoutModule,
-    MatCardModule
+    MatCardModule,
+    SharedLibModule.forRoot(environment)
   ],
   providers: []
 })
