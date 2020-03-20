@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { forkJoin } from 'rxjs';
-import { tap } from 'rxjs/operators';
 import { MessageService, SharepointIntegrationService } from 'shared-lib';
 import { environment } from '../../../../environments/environment';
 
@@ -10,7 +9,7 @@ import { environment } from '../../../../environments/environment';
   styleUrls: ['./main-view.component.scss']
 })
 export class MainViewComponent implements OnInit {
-  data: any;
+  data: any = [];
   loading = true;
 
   constructor(
@@ -37,11 +36,16 @@ export class MainViewComponent implements OnInit {
     });
 
     forkJoin(requests)
-      .pipe(
-        tap(response => console.log(response))
-      )
       .subscribe(
-        response => this.data = response,
+        (response: any) => response.forEach((r, rIndex) => r.value.forEach(n => {
+          this.data.push({
+            created: new Date(n.Created),
+            id: n.Id,
+            label: environment.sources[rIndex].label,
+            title: n.Title,
+            url: `${environment.sources[rIndex].rediretUrl}/${n.Id}`
+          });
+        })),
         err => this.message.genericHttpError(err),
         () => this.loading = false
       );

@@ -10,6 +10,11 @@ import { environment } from '../environments/environment';
 
 import { MainViewComponent } from './components/views/main-view/main-view.component';
 
+// Material components
+
+import { MatCardModule } from '@angular/material/card';
+import { MatChipsModule } from '@angular/material/chips';
+
 @NgModule({
   bootstrap: [AppComponent],
   declarations: [
@@ -19,6 +24,8 @@ import { MainViewComponent } from './components/views/main-view/main-view.compon
   imports: [
     BrowserModule,
     HttpClientModule,
+    MatCardModule,
+    MatChipsModule,
     SharedLibModule.forRoot(environment)
   ],
   providers: []

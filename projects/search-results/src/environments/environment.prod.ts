@@ -6,6 +6,7 @@ export const environment = {
   sources: [
     {
       fields: ['Title'],
+      label: 'Noticia',
       listName: 'Noticias',
       rediretUrl: '/SitePages/Web Parts/Portada.aspx'
     }
