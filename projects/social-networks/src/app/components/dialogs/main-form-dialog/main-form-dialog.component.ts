@@ -22,7 +22,7 @@ export class MainFormDialogComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.title = this.data ? 'Editar' : 'Agregar';
+    this.title = this.data.target ? 'Editar' : 'Agregar';
   }
 
   onClose() {
